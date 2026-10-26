@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build hello_server",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++14", "-g", "-Wall", "-Wextra",
+        "src/hello_server.cpp",
+        "-o", "hello_server.exe",
+        "-lws2_32"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "build hello_client",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++14", "-g", "-Wall", "-Wextra",
+        "src/hello_client.cpp",
+        "-o", "hello_client.exe",
+        "-lws2_32"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "build hello (both)",
+      "dependsOn": ["build hello_server", "build hello_client"],
+      "dependsOrder": "sequence",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    }
+  ]
+}
